@@ -4,13 +4,25 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import {GuardadosPage, HomePage, MapaPage, TabsPage} from "../pages/index.paginas";
+
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+
+//servicios
+import { HistorialProviders} from '../providers/historial/historial';
+
+//plugins
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    GuardadosPage, 
+    HomePage, 
+    MapaPage, 
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -19,12 +31,19 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    GuardadosPage, 
+    HomePage, 
+    MapaPage, 
+    TabsPage
   ],
   providers: [
     StatusBar,
+    BarcodeScanner,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HistorialProviders,
+    InAppBrowser
+    
   ]
 })
 export class AppModule {}
